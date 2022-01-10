@@ -1,0 +1,12 @@
+.save-btn{
+  width: 100%;
+  background: black;
+  color: white;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: none !important;
+}

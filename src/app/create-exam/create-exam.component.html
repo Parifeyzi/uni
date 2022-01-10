@@ -1,0 +1,228 @@
+<app-header></app-header>
+<div class="wrapper" *ngIf="examRepository.formalMode">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 px-5">
+        <div class="form-wrapper">
+          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">ایجاد آزمون
+            جدید
+          </div>
+          <div class="form row">
+            <div class="col-12 col-md-6 mb-3">
+              <input class="form-control" type="text" placeholder="عنوان" [(ngModel)]="examName">
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+              <input class="d-w form-control" type="text" placeholder="مدت زمان (دقیقه)" [(ngModel)]="examTime">
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                  <textarea class="form-control" placeholder="توضیحات" rows="3"
+                            [(ngModel)]="examDescription"></textarea>
+            </div>
+            <div class="col-12 col-md-6" style="position: relative;">
+              <input class="date-selector form-control" #fromInput matInput
+                     [matDatepicker]="picker5" (dateInput)="onInput($event)" (dateChange)="onChange($event)"
+                     placeholder="انتخاب تاریخ">
+              <mat-datepicker-toggle class="date-toggle tog" matSuffix [for]="picker5"></mat-datepicker-toggle>
+              <mat-datepicker #picker5></mat-datepicker>
+              <input class="date-selector form-control mt-3" style="padding-right: 30px"
+                     placeholder="انتخاب زمان" [(ngModel)]="examRepository.showTimerValue" (click)="onShowTimer()">
+              <mat-icon class="timer_icon">timer</mat-icon>
+              <ng-container class="my-5" *ngIf="examRepository.showTimer">
+                <app-timer></app-timer>
+              </ng-container>
+            </div>
+            <div class="row">
+              <!-- <button class="btn d-block col-6"
+                      style="background: #1e8417; margin-right: 10px; color: white"
+                      (click)="addToExams()">
+                آزمون با سوالات مشخص
+              </button>
+              <button class="btn d-block col-6 mt-2"
+                      style="background: #c1931f; margin-right: 10px; color: white"
+                      (click)="addExamWithRandomCount()">
+                آزمون با سوالات تصادفی
+              </button> -->
+              <div class="col-6 bg2">
+                <div class="row">
+                  <div class="col-1">
+                    <input type="radio" (click)="addToExams()">
+                  </div>
+                  <div class="col-11">
+                    انتخاب دستی سوالات
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 bg1">
+                <div class="row">
+                  <div class="col-1">
+                    <input type="radio" (click)="addExamWithRandomCount()">
+                  </div>
+                  <div class="col-11">
+                    انتخاب تصادفی سوالات
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngIf="showBank">
+<!--              <div class="row mt-3">-->
+      <div class="card border-success col-12 mb-3">
+        <div class="card-header bg-transparent border-success">لیست سوال ها</div>
+<!--        <div class="card-body text-success my_q" *ngFor="let question of questionList; let i = index">-->
+<!--          <h5 class="card-title"-->
+<!--              style="font-family: iranyekan !important;"-->
+<!--              [ngClass]="{'selected': question.attachment != null, 'n_selected' : question.attachment === null }"-->
+<!--              (click)="selectQuestion(question)"-->
+<!--          >{{i + 1}}) {{question.question}}</h5>-->
+<!--                  <div style="font-size: 10px" *ngFor="let a of answerList; let i = index">-->
+<!--                    <p class="card-text answers" [ngStyle]="{'background': a.isCorrect ? '#91e691' : '#ff8383'}">-->
+<!--                      {{i + 1}}) {{a.answer}}-->
+<!--                    </p>-->
+<!--                  </div>-->
+<!--        </div>-->
+        <div class="card-body text-success my_q" *ngFor="let question of examRepository.questions; let i = index">
+          <h5 class="card-title"
+              style="font-family: iranyekan !important;"
+              [ngClass]="{'selected': question.attachment != null, 'n_selected' : question.attachment === null }"
+              (click)="selectQuestion(question)"
+          >{{i + 1}}) {{question.question}}</h5>
+          <div style="font-size: 10px" *ngFor="let a of question.answers; let i = index">
+            <p class="card-text answers" style="color: black;">
+              {{i + 1}}) {{a.answer}}
+            </p>
+          </div>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+          <button class="btn btn-success" (click)="finalSelect()">تایید</button>
+        </div>
+      </div>
+    </div>
+            <div class="row mt-3" *ngIf="showRandomCount">
+<!--    <div class="row mt-3">-->
+      <div class="row">
+        <div class="col-6">
+          <input class="form-control random my-3" type="text"
+                 [(ngModel)]="randomCount"
+                 placeholder="تعداد سوالات را وارد کنید."
+                 (keyup.enter)="addToExamWithRandomCount()">
+        </div>
+        <div class="col-2">
+          <button class="btn"
+                  style="background: #680662; margin-right: 30px;
+                      color: white; width: 90%;
+                      margin-top: 15px" (click)="addToExamWithRandomCount()">
+            تایید
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper" *ngIf="examRepository.informalMode">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 px-5">
+        <div class="form-wrapper">
+          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">ایجاد آزمون
+            جدید
+          </div>
+          <div class="form row">
+            <div class="col-6 mb-3">
+              <input class="form-control" type="text" placeholder="عنوان" [(ngModel)]="examName">
+            </div>
+            <div class="col-6 mb-3">
+              <input class="d-w form-control" type="text" placeholder="مدت زمان (دقیقه)" [(ngModel)]="examTime">
+            </div>
+            <div class="col-6 mb-3">
+                  <textarea class="form-control" placeholder="توضیحات" rows="3"
+                            [(ngModel)]="examDescription"></textarea>
+            </div>
+            <!-- <div class="col-6" style="position: relative;">
+              <input class="date-selector form-control" #fromInput matInput
+                     [matDatepicker]="picker5" (dateInput)="onInput($event)" (dateChange)="onChange($event)"
+                     placeholder="انتخاب تاریخ">
+              <mat-datepicker-toggle class="date-toggle tog" matSuffix [for]="picker5"></mat-datepicker-toggle>
+              <mat-datepicker #picker5></mat-datepicker>
+              <input class="date-selector form-control mt-3" style="padding-right: 30px"
+                     placeholder="انتخاب زمان" [(ngModel)]="examRepository.showTimerValue" (click)="onShowTimer()">
+              <mat-icon class="timer_icon">timer</mat-icon>
+              <ng-container class="my-5" *ngIf="examRepository.showTimer">
+                <app-timer></app-timer>
+              </ng-container>
+            </div> -->
+            <div class="row">
+              <!-- <button class="btn d-block col-6"
+                      style="background: #1e8417; margin-right: 10px; color: white"
+                      (click)="addToExams()">
+                آزمون با سوالات مشخص
+              </button>
+              <button class="btn d-block col-6 mt-2"
+                      style="background: #c1931f; margin-right: 10px; color: white"
+                      (click)="addExamWithRandomCount()">
+                آزمون با سوالات تصادفی
+              </button> -->
+              <div class="col-6 bg2">
+                <div class="row">
+                  <div class="col-1">
+                    <input type="radio" (click)="addToExams()">
+                  </div>
+                  <div class="col-11">
+                    انتخاب دستی سوالات
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 bg1">
+                <div class="row">
+                  <div class="col-1">
+                    <input type="radio" (click)="addExamWithRandomCount()">
+                  </div>
+                  <div class="col-11">
+                    انتخاب تصادفی سوالات
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngIf="showBank">
+      <!--        <div class="row mt-3">-->
+      <div class="card border-success col-12 mb-3">
+        <div class="card-header bg-transparent border-success">لیست سوال ها</div>
+        <div class="card-body text-success my_q" *ngFor="let question of questionList; let i = index">
+          <h5 class="card-title"
+              style="font-family: iranyekan !important;"
+              [ngClass]="{'selected': question.attachment != null, 'n_selected' : question.attachment === null }"
+              (click)="selectQuestion(question)"
+          >{{i + 1}}) {{question.question}}</h5>
+        </div>
+        <div class="card-footer bg-transparent border-success">
+          <button class="btn btn-success" (click)="finalSelect()">تایید</button>
+        </div>
+      </div>
+    </div>
+            <div class="row mt-3" *ngIf="showRandomCount">
+<!--    <div class="row mt-3">-->
+      <div class="row">
+        <div class="col-6">
+          <input class="form-control random my-3" type="text"
+                 [(ngModel)]="randomCount"
+                 placeholder="تعداد سوالات را وارد کنید."
+                 (keyup.enter)="addToExamWithRandomCount()">
+        </div>
+        <div class="col-2">
+          <button class="btn"
+                  style="background: #680662; margin-right: 30px;
+                      color: white; width: 90%;
+                      margin-top: 15px" (click)="addToExamWithRandomCount()">
+            تایید
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

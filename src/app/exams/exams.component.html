@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title">
+    آزمون ها
+  </div>
+  <div class="row">
+    <div class="card text-white mb-3 col-12"
+         style="background: #278778;" *ngFor="let exam of exams">
+      <div class="card-header">{{exam.title}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{exam.description}}</h5>
+        <div class="row">
+          <div class="col-4 card-text">نام استاد: {{exam.teacher.name}}</div>
+          <div class="col-4 card-text">مدت زمان امتحان: {{exam.duration}} دقیقه</div>
+          <div class="col-4 card-text">
+<!--            <button class="btn"-->
+<!--                    style="background: white; color: #951846;-->
+<!--                    position: absolute; left: 25px; bottom: 20px"-->
+<!--                    (click)="goToExam(exam.id)">شروع آزمون</button>-->
+<!--            <button class="btn"-->
+<!--                    [ngClass]="{'not_allow': exam.created_at, 'normal' : !exam.created_at}"-->
+<!--                    (click)="checkIsFinished(exam)">شروع آزمون</button>-->
+            <ng-container *ngFor="let p of exam.updated_at">
+            <div class="row mb-5 mb-md-0" *ngIf="p.id == 'bigger'">
+                <div class="count_down" *ngIf="!exam.created_at">
+                  {{p.secondsToDay}}:
+                  {{p.minutesToDay}}:
+                  {{p.hoursToDay}}
+                  |
+                  {{p.daysToDay}} روز
+                </div>
+            </div>
+              <div class="row" *ngIf="p.id == 'smaller'">
+                از زمان آزمون گذشته است.
+              </div>
+            <button class="btn not_allow" *ngIf="exam.created_at" disabled>
+              شروع آزمون
+            </button>
+            <button class="btn normal" *ngIf="!exam.created_at"
+                    [disabled]="p.id == 'smaller'"
+                    (click)="goToExam(exam.id)">
+              شروع آزمون
+            </button>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

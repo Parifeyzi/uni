@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title" style="font-size: 22px; font-weight: 600; margin: 20px 0">
+    آزمون ها
+  </div>
+  <div class="row">
+    <div class="card text-white mb-3 col-12 col-md-4" (click)="navigateToStudentsPage(exam.id)"
+         style="background: #f1be69; padding: 10px; cursor: pointer;" *ngFor="let exam of exams">
+      <div class="card-header" style="font-family: iranyekan !important;">آزمون: {{exam.title}}</div>
+      <div class="card-body">
+        <h5 class="card-title" style="font-family: iranyekan !important;">نام استاد: {{exam.teacher.name}}</h5>
+        <h5 class="card-title" style="font-family: iranyekan !important;">توضیحات آزمون: {{exam.description}}</h5>
+      </div>
+    </div>
+  </div>
+</div>

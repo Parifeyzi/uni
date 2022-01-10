@@ -1,0 +1,20 @@
+<div mat-dialog-title class="zarbdar" (click)="close()">
+  ×
+</div>
+<div mat-dialog-content>
+  <div class="row mb-4">
+    <input class="form-control" type="text" placeholder="نام درس" [(ngModel)]="lesson.title">
+  </div>
+  <div class="row mb-4">
+    <textarea class="form-control" placeholder="توضیحات" [(ngModel)]="lesson.description">{{lesson.description}}</textarea>
+  </div>
+  <div class="row mb-4">
+    <input type="text" class="form-control" placeholder="ایمیل استاد" [(ngModel)]="lesson.teacherEmail">
+  </div>
+  <div class="row mb-3">
+    <input type="text" class="form-control" placeholder="لینک کاور" [(ngModel)]="lesson.cover">
+  </div>
+</div>
+<div class="row" mat-dialog-actions>
+  <button (click)="save()" class="btn save-btn">ذخیره</button>
+</div>

@@ -1,0 +1,75 @@
+.btns{
+  float: left;
+  display: block;
+  text-align: left;
+}
+.btn-primary{
+  background-color: #61a1ff !important;
+}
+.btn-danger{
+  background-color: #ff6473 !important;
+}
+.question-bank{
+  width: 100%;
+  margin: 50px 0;
+}
+mat-label{
+  font-family: iranyekan !important;
+}
+::ng-deep .mat-form-field-flex{
+  background-color: transparent !important;
+}
+.btn-dark{
+  width: 185px;
+  padding: 10px 0px;
+}
+.main-title{
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: -11px;
+}
+.fieldInput {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+.form-input {
+  border: none;
+  padding: 12px 20px;
+  font-size: 9px;
+  color: #6A7C92;
+}
+.form-submit {
+  font-size: 30px;
+  color: #6A7C92;
+  position: absolute;
+  left: -11px;
+  top: 3px;
+  width: 70px;
+  height: 35px;
+  border-radius: 17px;
+  border: none;
+  background: none;
+  box-shadow: 5px -2px 81px 1px rgba(0,0,0,0.09);
+  cursor: pointer;
+}
+.txx{
+  width: 98%;
+  margin: 0 14px;
+}
+.btn-add{
+  background-color: #61a1ff !important;
+  color: white;
+}
+.mat-form-field{
+  width: 100%;
+}
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  border-radius: 2px !important;
+  border: 1px solid #ccc !important;
+  padding: 0 !important;
+}
+.checker{
+  display: block;
+  margin: auto;
+}

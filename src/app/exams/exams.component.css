@@ -1,0 +1,85 @@
+.exam_section{
+  background-color: white;
+  border: 1px solid #959595;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px 3px #e5e5e5;
+}
+.title{
+  font-weight: 700;
+  font-size: 25px;
+  margin: 50px 0 20px;
+}
+.exam_info{
+  font-weight: 500;
+  font-size: 14px;
+  padding-right: 40px;
+}
+.description{
+  padding-right: 40px;
+  font-size: 11px;
+  color: #575757;
+}
+.date{
+  padding-right: 35px;
+  margin: 20px 0;
+}
+.date_form{
+  background-color: #575757;
+  color: white;
+  width: 80px;
+  border-radius: 20px;
+  padding: 5px 11px;
+  box-shadow: 0px 0px 2px 3px #c1c1c1;
+  margin: 0px 10px;
+}
+.time_form{
+  font-weight: 700;
+  font-size: 14px;
+  width: 50px;
+}
+.seconds{
+  float: left;
+  margin: 5px auto 10px 100px;
+  clear: both;
+  font-weight: 800;
+}
+.seconds_text{
+  float: left;
+  margin: 5px auto 10px 95px;
+  clear: both;
+  font-size: 10px;
+  color: #848484;
+}
+.dis_btn{
+  cursor: not-allowed !important;
+  background: rgba(73, 73, 73, 0.5);
+}
+.al_btn{
+  cursor: pointer;
+  background: #aed23a;
+  border: 1px solid #929292;
+  color: white;
+}
+.normal{
+  background: white;
+  color: #951846;
+  position: absolute;
+  left: 25px;
+  bottom: 20px
+}
+.not_allow{
+  background-color: #535353;
+  color: white;
+  position: absolute;
+  left: 25px;
+  bottom: 20px;
+  cursor: not-allowed;
+}
+.count_down{
+  width: 115px;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 7px 5px 7px 2px;
+}

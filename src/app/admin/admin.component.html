@@ -1,0 +1,90 @@
+<app-header></app-header>
+<div class="wrapper">
+  <router-outlet></router-outlet>
+<!--  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">-->
+<!--    <li class="nav-item" role="presentation">-->
+<!--      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"-->
+<!--              type="button" role="tab" aria-controls="pills-home" aria-selected="true">داشبورد</button>-->
+<!--    </li>-->
+<!--    <li class="nav-item" role="presentation">-->
+<!--      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"-->
+<!--              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">لیست دروس</button>-->
+<!--    </li>-->
+<!--    <li class="nav-item" role="presentation">-->
+<!--      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"-->
+<!--              type="button" role="tab" aria-controls="pills-contact" aria-selected="false" (click)="navigateToBank()">تایید سوال ها</button>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--  <div class="tab-content" id="pills-tabContent">-->
+<!--    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">-->
+<!--    <div class="container">-->
+<!--      <div class="row">-->
+<!--        <div class="col-3">-->
+<!--          <div class="col-wrapper">-->
+<!--            <div class="col-wrapper-title">خوش آمدید</div>-->
+<!--            <div class="col-wrapper-description">در این صفحه شما میتوانید نمایی از کل وضعیت دروس و آزمون ها را مشاهده نمایید.</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-3">-->
+<!--          <div class="col-wrapper">-->
+<!--            <div class="col-wrapper-title">تعداد دروس</div>-->
+<!--            <div class="col-wrapper-number">{{checkLessonsLength()}}</div>-->
+<!--            <div class="col-wrapper-extra">-->
+<!--              <a [routerLink]="['/courses']">مشاهده همه</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-3">-->
+<!--          <div class="col-wrapper">-->
+<!--            <div class="col-wrapper-title">تعداد سوالات</div>-->
+<!--            <div class="col-wrapper-number">0</div>-->
+<!--            <div class="col-wrapper-extra">-->
+<!--              <a>مشاهده همه</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-3">-->
+<!--          <div class="col-wrapper">-->
+<!--            <div class="col-wrapper-title">تعداد آزمون ها</div>-->
+<!--            <div class="col-wrapper-number">0</div>-->
+<!--            <div class="col-wrapper-extra">-->
+<!--              <a>مشاهده همه</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">&ndash;&gt;-->
+<!--&lt;!&ndash;      <button class="btn btn-dark create-new-course" (click)="openDialog()">&ndash;&gt;-->
+<!--&lt;!&ndash;        ایجاد درس جدید&ndash;&gt;-->
+<!--&lt;!&ndash;      </button>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="def-container">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-3 lesson-curs" *ngFor="let lesson of examRepository.lessons" (click)="navigateToCreateExam(lesson.id)">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img class="lesson_cover" src="{{lesson.cover}}" alt="" width="350px" height="150px">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="col-wrapper-title">{{lesson.title}}</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"></div>-->
+<!--  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">-->
+    <button class="btn btn-dark create-new-course" (click)="openDialog()">
+      ایجاد درس جدید
+    </button>
+    <div class="def-container">
+      <div class="row">
+        <div class="col-3 lesson-curs" *ngFor="let lesson of examRepository.lessons" (click)="navigateToCreateExam(lesson.id)">
+          <div class="col-wrapper">
+            <img class="lesson_cover" src="{{lesson.cover}}" alt="" width="350px" height="150px">
+            <div class="col-wrapper-title">{{lesson.title}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--  </div>-->
+<!--  </div>-->
+</div>

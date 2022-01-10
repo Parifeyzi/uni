@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title">
+    کارنامه
+  </div>
+  <hr class="my-2">
+  <div class="row" style="font-size: 12px; font-weight: 600; margin-right: 3px">
+    نام آزمون: {{results.exam}}
+  </div>
+  <div class="row" style="font-size: 12px; font-weight: 600; margin-right: 3px">
+    نام استاد: {{results.teacher}}
+  </div>
+  <div class="row" style="font-size: 12px; font-weight: 600; margin: 3px 3px 20px 0">
+    نمره: {{score | number:'1.2-2'}}
+  </div>
+  <div class="row">
+    <div class="col-12 card mb-3">
+        <div style="background: transparent; color: black">
+          <div style="font-size: 13px; font-weight: 700;
+                      background-color: #e3e9f6; padding: 5px 10px;
+                      border: 1px solid #254666; border-radius: 5px; margin: 10px 0"
+               *ngFor="let question of results.questions; let i = index">
+            <p style="font-size: 15px; font-weight: 800; color: #254666">{{i + 1}}) {{question.question}}</p>
+            <ng-container style="font-size: 9px; color: white;"
+                          *ngFor="let answer of question.answers; let i = index;">
+<!--              <div [ngClass]="{'is_correct': answer.is_correct === 1, 'not_correct': answer.is_correct === 0, 'your': answer.hash === question.student_answer.hash}">-->
+<!--                {{i + 1}}) {{answer.text}} |-->
+<!--                <div>-->
+<!--                  {{answer.hash}} | {{question.student_answer.hash}}-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div [ngClass]="{'is_correct': answer.is_correct === 1 && answer.hash === question.student_answer.hash-->
+<!--              , 'not_correct': answer.is_correct === 0 && answer.hash === question.student_answer.hash}">-->
+<!--                <input type="radio" [checked]="answer.hash === question.student_answer.hash"> {{i + 1}}) {{answer.text}}-->
+<!--&lt;!&ndash;                <div *ngIf="answer.is_correct === 1">درست</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div *ngIf="answer.is_correct === 0">غلط</div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div *ngIf="answer.hash === question.student_answer.hash">جواب شما</div>&ndash;&gt;-->
+<!--              </div>-->
+              <div style="padding: 5px 2px" [ngClass]="{'is_correct': answer.is_correct === 1
+              , 'not_correct': answer.is_correct === 0 && answer.hash === question.student_answer.hash}">
+                <input type="radio" disabled [checked]="answer.hash === question.student_answer.hash"> {{i + 1}}) {{answer.text}}
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

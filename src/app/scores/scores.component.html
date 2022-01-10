@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title">
+    نمرات
+  </div>
+  <div class="row">
+    <div class="col-3 card mb-3" *ngFor="let result of results" (click)="goToScoreDetail(result.id)">
+      <div class="card-header">{{result.exam}}</div>
+      <div class="card-body">
+        <h5 class="card-title">نام استاد: {{result.teacher}}</h5>
+        <p class="card-text">نمره : {{result.student_id | number:'1.2-2'}}</p>
+<!--        <p class="card-text" *ngIf="result.student_id.length > 3">نمره : {{result.student_id.substr(0,4)}}</p>-->
+<!--        <div style="background: transparent; color: black">-->
+<!--          <div style="font-size: 13px; font-weight: 700;-->
+<!--                      background-color: transparent; padding: 5px 0"-->
+<!--               *ngFor="let question of result.questions; let i = index">-->
+<!--            <p>{{i + 1}}) {{question.question}}</p>-->
+<!--            <ng-container style="font-size: 9px; color: white;"-->
+<!--            *ngFor="let answer of question.answers; let i = index;">-->
+<!--              <div [ngClass]="{'is_correct': answer.is_correct === 1, 'not_correct': answer.is_correct === 0}">-->
+<!--                {{i + 1}}) {{answer.text}}-->
+<!--              </div>-->
+<!--            </ng-container>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

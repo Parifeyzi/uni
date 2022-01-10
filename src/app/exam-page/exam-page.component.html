@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="container" *ngIf="examRepository.backToExamsMode === 'no'">
+  <div class="mt-3 my-1" style="font-size: 20px; font-weight: 500">
+    آزمون فلان
+  </div>
+  <hr>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card border-dark mb-3" *ngFor="let question of examRepository.questions">
+        <div class="card-header">{{question.question}}</div>
+        <div class="card-body text-dark">
+          <div class="form-check" *ngFor="let a of question.answers; let i = index">
+            <input class="form-check-input" type="radio" id="{{a.id}}"
+                   name="{{a.hash}}"
+                   [(ngModel)]="a.hash" (click)="answerFunc(a.hash, question.id)">
+            <label class="form-check-label" for="{{a.id}}">
+              {{i + 1}}) {{a.text}}
+            </label>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn btn-dark btn-block mb-5" (click)="check()">ثبت امتحان</button>
+      </div>
+<!--      <div class="card border-dark mb-3">-->
+<!--        <div class="card-header">10 + 10</div>-->
+<!--        <div class="card-body text-dark">-->
+<!--          <div class="form-check" *ngFor="let a of answer">-->
+<!--            <input class="form-check-input" type="radio" name="flexRadioDefault" id="{{a.hash}}"-->
+<!--                   [(ngModel)]="a.hash" (click)="answerFunc(a.hash)">-->
+<!--            <label class="form-check-label" for="{{a.hash}}">-->
+<!--              {{a.text}}-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+<div class="container" *ngIf="examRepository.backToExamsMode === 'yes'">
+  <div class="row">
+    شما دیگر مجاز به شرکت در آزمون نیستید.
+  </div>
+</div>

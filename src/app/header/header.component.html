@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="examRepository.unAuthMode">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" (click)="navigateToRegister()">ثبت نام</a>
+        <a class="nav-link" (click)="navigateToLogin()">ورود</a>
+        <a class="nav-link" (click)="navigateToCourses()">دروس ارائه شده</a>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="examRepository.adminMode">
+  <div class="container-fluid d-block">
+    <a class="logout" (click)="navigateToIndexPage()">خروج از حساب کاربری</a>
+  </div>
+  <router-outlet></router-outlet>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="examRepository.teacherMode">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup1">
+      <div class="navbar-nav">
+        <a class="nav-link" (click)="navigateToIndexPage()">خروج</a>
+        <a class="nav-link" aria-current="page" (click)="navigateToCourses()">دروس ارائه شده</a>
+        <a class="nav-link" aria-current="page" (click)="navigateToExamList()">لیست آزمون ها</a>
+      </div>
+    </div>
+  <router-outlet></router-outlet>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="examRepository.studentMode">
+  <div class="container-fluid d-block">
+    <a class="nav-link" (click)="navigateToCourses()">دروس ارائه شده</a>
+    <a class="nav-link" (click)="navigateToExams()">آزمون ها</a>
+    <a class="nav-link" (click)="navigateToScores()">نمرات</a>
+    <a class="logout" (click)="navigateToIndexPage()">خروج از حساب کاربری</a>
+  </div>
+  <router-outlet></router-outlet>
+</nav>
+
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="!examRepository.headerLoginMode">-->
+<!--  <div class="container-fluid">-->
+<!--    <a class="navbar-brand" href="#"> </a>-->
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+<!--      <div class="navbar-nav">-->
+<!--        <a class="nav-link active" aria-current="page" (click)="navigateToRegister()">ثبت نام</a>-->
+<!--        <a class="nav-link" (click)="navigateToLogin()">ورود</a>-->
+<!--        <a class="nav-link" (click)="navigateToCourses()">دروس ارائه شده</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <router-outlet></router-outlet>-->
+<!--</nav>-->
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="examRepository.headerLoginMode">-->
+<!--  <div class="container-fluid d-block">-->
+<!--    <a class="logout" (click)="navigateToResults()">مشاهده نتایج</a>-->
+<!--    <a class="logout" (click)="navigateToIndexPage()">خروج از حساب کاربری</a>-->
+<!--  </div>-->
+<!--  <router-outlet></router-outlet>-->
+<!--</nav>-->

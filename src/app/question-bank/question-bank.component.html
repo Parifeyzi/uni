@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="title">بانک سوالات</div>
+  </div>
+  <div class="row my-3">
+    <div class="col-4" *ngFor="let question of examRepository.questions; let i = index">
+      <div class="card my-3">
+        <div class="card-body mx-2">
+          <h4 class="card-subtitle mb-2 text-muted">طراح سوال: {{question.user}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">عنوان سوال</h6>
+          <h5 class="card-title" style="font-size: 14px; font-weight: 700">
+<!--            .:. {{question.question}}-->
+            {{i + 1}}) {{question.question}}
+          </h5>
+          <p class="card-text" style="font-size: 10px">
+            <ng-container>
+            </ng-container>
+          </p>
+          <div style="font-size: 10px" *ngFor="let a of question.answers; let i = index">
+            <p class="card-text answers" [ngStyle]="{'background': a.isCorrect ? '#91e691' : '#ff8383'}">
+              {{i + 1}}) {{a.answer}}
+            </p>
+          </div>
+          <button class="btn col-12 card-link"
+                  [ngStyle]="{'background': question.isAccepted === 1 ? '#459045' : '#e8e8e8'}"
+                  style="font-size: 12px" (click)="acceptQuestion(question)">تایید سوال</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

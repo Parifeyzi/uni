@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+  <form class="bx-d" style="width: 500px;padding: 30px 20px ;display: block; margin: 150px auto; background-color: white; border-radius: 5px">
+    <div class="auth-title">ورود</div>
+    <div class="mb-4">
+      <input type="email" class="form-control" id="email" placeholder="ایمیل" [(ngModel)]="user.email" name="email">
+    </div>
+    <div class="mb-4">
+      <input type="password" class="form-control" id="password" placeholder="رمز عبور" [(ngModel)]="user.password" name="password">
+    </div>
+    <button type="submit" class="btn btn-register" (click)="login()">ورود</button>
+    <hr>
+    <div class="ex-login">
+      آیا هنوز ثبت نام نکرده اید؟ برای <a class="click-login" (click)="navigateToRegister()">ثبت نام</a> کلیک کنید.
+    </div>
+  </form>
+</div>

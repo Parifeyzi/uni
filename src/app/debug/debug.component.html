@@ -1,0 +1,36 @@
+<app-header></app-header>
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <p>
+      <label for="name">سوال</label>
+      <input type="text" id="name" name="name" formControlName="name" class="form-control">
+    </p>
+    <button type="button" (click)="addQuantity()" class="btn btn-add">انتخاب جواب ها</button>
+    <table class="table table-bordered" formArrayName="quantities">
+      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+        <td>
+          پاسخ اول
+          <input type="text" formControlName="firstAnswer" class="form-control">
+        </td>
+        <td>
+          پاسخ دوم
+          <input type="text" formControlName="secondAnswer" class="form-control">
+        </td>
+        <td>
+          پاسخ سوم
+          <input type="text" formControlName="thirdAnswer" class="form-control">
+        </td>
+        <td>
+          پاسخ چهارم
+          <input type="text" formControlName="fourthAnswer" class="form-control">
+        </td>
+        <td>
+          <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+        </td>
+      </tr>
+    </table>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <br/>
+  {{this.productForm.value | json}}
+</div>

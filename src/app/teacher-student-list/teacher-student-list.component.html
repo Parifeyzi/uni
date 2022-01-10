@@ -1,0 +1,13 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title" style="margin: 20px 0; font-size: 20px; font-weight: 500">
+    لیست دانشجویانی که در این آزمون شرکت کرده اند:
+  </div>
+  <div class="row">
+    <div class="card text-white mb-3 col-2"
+         style="background: #9c034f; text-align: center; cursor:pointer;" *ngFor="let student of students"
+          (click)="navigateToDetailPage(student.id)">
+      <div class="card-header">{{student.name}}</div>
+    </div>
+  </div>
+</div>

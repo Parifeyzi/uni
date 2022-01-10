@@ -1,0 +1,89 @@
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+  background-color: transparent;
+  color: black;
+  border-bottom: 3px solid black;
+}
+#pills-tabContent{
+  background-color: #e9e9e9;
+}
+
+.wrapper{
+  margin: 100px 0 0;
+}
+.tog{
+  position: absolute !important;
+  top: 0 !important;
+}
+.timer_icon{
+  color: #686868 !important;
+  position: absolute !important;
+  top: 70px !important;
+  right: 17px !important;
+}
+.options_exam{
+  font-family: iranyekan !important;
+}
+.questions_list .questions_list_item{
+  height: 45px;
+  background: white;
+  padding: 10px 50px;
+  width: 100%;
+  border: 1px black dotted;
+  margin-right: 1px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.questions_list .questions_list_item:hover{
+  background-color: #e0e0e0;
+  transition: all 0.3s ease-in-out;
+}
+.questions_list .questions_list_item:focus{
+  background-color: #b9f7b1;
+  transition: all 0.3s ease-in-out;
+}
+.my_q .card-title:focus{
+  background-color: #b9f7b1;
+  transition: all 0.3s ease-in-out;
+}
+.questions_list{
+  background-color: white;
+  padding: 20px;
+  margin-right: 0px;
+  border-radius: 3px;
+  overflow-y: scroll !important;
+  height: 200px;
+}
+.selected{
+  background-color: #aaaaaa;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+.n_selected{
+  background-color: rgba(255,255,255,0);
+  cursor: pointer;
+}
+.random{
+  margin-right: 30px;
+}
+::ng-deep .date-selector{
+  padding-right: 30px !important;
+  border: 1px solid #c1c1c1 !important;
+  height: 45px !important;
+  /*width: 386px !important;*/
+}
+.d-w{
+  border: 1px solid #c1c1c1 !important;
+  height: 45px !important;
+  /*width: 386px !important;*/
+}
+.bg1{
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 5px 0px 0px 5px;
+}
+.bg2{
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 0px 5px 5px 0px;
+}

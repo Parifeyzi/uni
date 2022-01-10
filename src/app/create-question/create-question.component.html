@@ -1,0 +1,196 @@
+<app-header></app-header>
+<hr class="my-5">
+<div class="container">
+  <div class="row">
+    <div class="btns">
+      <button class="btn btn-primary py-2 px-3 mx-2" (click)="createNewQuestionFunc()">ایجاد سوال جدید</button>
+      <button class="btn btn-danger py-2 px-3 mr-2" *ngIf="checkStudentMode !== 'student'" (click)="navigateToCreateNewExam()">ایجاد آزمون جدید</button>
+      <button class="btn btn-warning py-2 px-3 mx-2" *ngIf="checkStudentMode !== 'student'" (click)="navigateToBank()">بانک سوالات</button>
+    </div>
+  </div>
+  <div *ngIf="createNewQuestion">
+    <form>
+      <div class="row" style="margin: 0 5px 0 0 ">ایجاد سوال جدید</div>
+      <div class="row my-2">
+        <div class="col-6">
+          <input type="text" class="form-control" name="nvQuestionTitle"
+          [(ngModel)]="nvQuestionTitle" (keyup.enter)="createQuestionForLesson()">
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-6">
+          <div class="row my-2" style="display: none" [ngStyle]="{'display': nvFirstAnswer ? 'flex' : 'none'}">
+            <div class="col-1 checker">
+              <input type="radio" [(ngModel)]="nvFirstCorrection"
+              [value]="1"
+              name="nvFirstCorrection"
+              (click)="checkFirst(nvFirstCorrection)"/>
+            </div>
+            <div class="col-9">
+            <input type="text" name="name" class="form-control" [(ngModel)]="nvOne">
+            </div>
+            <div class="col-2">
+              <button class="btn" style="padding: 5px 22px; background: #00b600 !important; color: white"
+              (click)="addSecondAnswer()">+</button>
+            </div>
+            <!-- <div class="col-12 my-1">
+              <mat-form-field appearance="fill">
+                <mat-select [(ngModel)]="nvFirstCorrection" name="food">
+                  <mat-option *ngFor="let correction of corrections" [value]="correction.value">
+                    {{correction.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </div>
+          <div class="row my-2" style="display: none" [ngStyle]="{'display': nvSecondAnswer ? 'flex' : 'none'}">
+            <div class="col-1 checker">
+              <input type="radio" [(ngModel)]="nvSecondCorrection"
+              [value]="1"
+              name="nvSecondCorrection"
+              (click)="checkSecond(nvSecondCorrection)">
+            </div>
+            <div class="col-9">
+              <input type="text" name="name" class="form-control" [(ngModel)]="nvTwo">
+            </div>
+            <div class="col-2">
+              <button class="btn" style="padding: 5px 22px; background: #00b600 !important; color: white"
+                      (click)="addThirdAnswer()">+</button>
+            </div>
+            <!-- <div class="col-12 my-1">
+              <mat-form-field appearance="fill">
+                <mat-select [(ngModel)]="nvSecondCorrection" name="food">
+                  <mat-option *ngFor="let correction of corrections" [value]="correction.value">
+                    {{correction.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </div>
+          <div class="row my-2" style="display: none" [ngStyle]="{'display': nvThirdAnswer ? 'flex' : 'none'}">
+            <div class="col-1 checker">
+              <input type="radio" [(ngModel)]="nvThirdCorrection"
+              [value]="1"
+              name="nvThirdCorrection"
+              (click)="checkThird(nvThirdCorrection)">
+            </div>
+            <div class="col-9">
+              <input type="text" name="name" class="form-control" [(ngModel)]="nvThree">
+            </div>
+            <div class="col-2">
+              <button class="btn" style="padding: 5px 22px; background: #00b600 !important; color: white"
+                      (click)="addFourthAnswer()">+</button>
+            </div>
+            <!-- <div class="col-12 my-1">
+              <mat-form-field appearance="fill">
+                <mat-select [(ngModel)]="nvThirdCorrection" name="food">
+                  <mat-option *ngFor="let correction of corrections" [value]="correction.value">
+                    {{correction.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </div>
+          <div class="row my-2" style="display: none" [ngStyle]="{'display': nvFourthAnswer ? 'flex' : 'none'}">
+            <div class="col-1 checker">
+              <input type="radio" [(ngModel)]="nvFourthCorrection"
+              [value]="1"
+              name="nvFourthCorrection"
+              (click)="checkFourth(nvFourthCorrection)">
+            </div>
+            <div class="col-9">
+              <input type="text" name="name" class="form-control" [(ngModel)]="nvFourth">
+            </div>
+            <div class="col-2">
+              <button class="btn" style="padding: 5px 22px; background: #00b600 !important; color: white"
+              (click)="logger()">اتمام</button>
+            </div>
+            <!-- <div class="col-12 my-1">
+              <mat-form-field appearance="fill">
+                <mat-select [(ngModel)]="nvFourthCorrection" name="food">
+                  <mat-option *ngFor="let correction of corrections" [value]="correction.value">
+                    {{correction.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </div>
+        </div>
+      </div>
+<!--      <button class="btn btn-primary mx-3" onclick="document.getElementById('getFile').click()">انتخاب فایل</button>-->
+<!--      <input type='file' id="getFile" style="display:none">-->
+<!--      <button type="button" (click)="addQuantity()" class="btn btn-add">اضافه کردن جواب ها</button>-->
+<!--      <div class="row my-5" formArrayName="quantities">-->
+<!--        <div class="row" *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">-->
+<!--          <div class="col-3">-->
+<!--            <input type="radio">-->
+<!--            <input type="text" formControlName="firstAnswer" class="form-control" placeholder="پاسخ اول">-->
+<!--          </div>-->
+<!--          <div class="col-3">-->
+<!--            <input type="radio">-->
+<!--            <input type="text" formControlName="secondAnswer" class="form-control" placeholder="پاسخ دوم">-->
+<!--          </div>-->
+<!--          <div class="col-3">-->
+<!--            <input type="radio">-->
+<!--            <input type="text" formControlName="thirdAnswer" class="form-control" placeholder="پاسخ سوم">-->
+<!--          </div>-->
+<!--          <div class="col-3">-->
+<!--            <input type="radio">-->
+<!--            <input type="text" formControlName="fourthAnswer" class="form-control" placeholder="پاسخ چهارم">-->
+<!--          </div>-->
+<!--          <div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <button type="submit" class="btn btn-success">ثبت</button>-->
+    </form>
+<!--      <br/>-->
+<!--    <hr>-->
+<!--    {{question}}-->
+<!--      <div *ngFor="let a of answers">-->
+<!--        {{a.value}}-->
+<!--      </div>-->
+<!--      <div class="row my-4">-->
+<!--        <button class="btn btn-primary d-block" (click)="saveQuestion()">ذخیره سوال</button>-->
+<!--      </div>-->
+  </div>
+<!--  <div class="row my-4">-->
+<!--    <form>-->
+<!--      <mat-form-field class="question-bank" appearance="fill" (click)="showQuestions()">-->
+<!--        <mat-label>بانک سوالات</mat-label>-->
+<!--        <mat-select [(ngModel)]="selectedValue" name="food">-->
+<!--          <mat-option>-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </form>-->
+<!--    <div class="row" *ngIf="examRepository.showQuestions">-->
+<!--      <div class="col-10">-->
+<!--        <div class="row question">{{generatedQuestion}}</div>-->
+<!--        <div class="row answer">-->
+<!--          1) {{generatedAnswer1}}-->
+<!--        </div>-->
+<!--        <div class="row answer">-->
+<!--          2) {{generatedAnswer2}}-->
+<!--        </div>-->
+<!--        <div class="row answer">-->
+<!--          3) {{generatedAnswer3}}-->
+<!--        </div>-->
+<!--        <div class="row answer">-->
+<!--          4) {{generatedAnswer4}}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-2" *ngIf="!examRepository.isAccepted" (click)="changeToAccepted()">-->
+<!--      <div class="yellow-badge">-->
+<!--        در انتظار تایید-->
+<!--      </div>-->
+<!--      </div>-->
+<!--      <div class="col-2" *ngIf="examRepository.isAccepted">-->
+<!--        <div class="green-badge">-->
+<!--          تایید شده-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+</div>
+<hr>

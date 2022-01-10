@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row" style="display: block; text-align: center; margin-top: 100px;
+    font-size: 18px; font-weight: 600;">نوع آزمون را مشخص کنید
+    </div>
+    <div class="row mar-top">
+        <div class="col-6 formal" style="cursor: pointer;" (click)="examRepository.navigateToFormal()">
+            <div class="row exam_box">
+                <input class="col-1" type="radio" [value]='0'>
+                <div class="col-11">آزمون رسمی</div>
+            </div>
+        </div>
+        <div class="col-6 informal" style="cursor: pointer;" (click)="examRepository.navigateToinFormal()">
+            <div class="row exam_box">
+                <input class="col-1" type="radio" [value]='1'>
+                <div class="col-11">آزمون آزمایشی</div>
+            </div>
+        </div>
+    </div>
+</div>

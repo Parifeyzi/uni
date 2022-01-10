@@ -1,0 +1,30 @@
+::ng-deep .mat-snack-bar-container{
+  /*background: #DC143C !important;*/
+  color: white !important;
+  background: #0aa200!important;
+  text-align: center !important;
+}
+::ng-deep .mat-simple-snackbar{
+  text-align: center !important;
+  font-family: iranyekan !important;
+  display: block !important;
+  margin: auto !important;
+}
+::ng-deep.mat-progress-spinner.mat-accent circle, .mat-spinner.mat-accent circle{
+  stroke: white !important;
+}
+::ng-deep.green-snackbar {
+  background: #0aa200 !important;
+  color: white;
+  direction: rtl !important;
+}
+::ng-deep.green-snackbar button {
+  background-color: #0aa200 !important;
+  color: white;
+  border: none;
+}
+::ng-deep.red-snackbar {
+  background: #E0003E !important;
+  color: white;
+  direction: rtl !important;
+}

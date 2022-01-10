@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row title">
+    آزمون: {{response.exam}}
+  </div>
+  <div class="row title">
+    نام استاد: {{response.teacher}}
+  </div>
+  <hr class="my-2">
+  <div class="row">
+    <div class="col-12 card mb-3">
+      <div style="background: transparent; color: black">
+        <div style="font-size: 13px; font-weight: 700;
+                      background-color: #e3e9f6; padding: 5px 10px;
+                      border: 1px solid #254666; border-radius: 5px; margin: 10px 0"
+             *ngFor="let res of response.questions; let i = index">
+          <p style="font-size: 15px; font-weight: 800; color: #254666">{{i + 1}}) {{res.question}}</p>
+          <ng-container style="font-size: 9px; color: white;"
+                        *ngFor="let answer of res.answers; let i = index;">
+            <div style="padding: 5px 2px" [ngClass]="{'is_correct': answer.is_correct === 1
+              , 'not_correct': answer.is_correct === 0 && answer.hash === res.student_answer.hash}">
+              <input type="radio" disabled [checked]="answer.hash === res.student_answer.hash"> {{i + 1}}) {{answer.text}}
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

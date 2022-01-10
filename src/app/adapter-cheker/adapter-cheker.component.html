@@ -1,0 +1,115 @@
+<div class="flex-container" fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+  <mat-card fxFlex="100">
+    <mat-card-title>Simple datepicker</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>Datepicker with a Gregorian moment startAt 2017-01-01 and startView="year"</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>Date validation - min & max</mat-card-title>
+    <mat-card-subtitle>min: 2017-10-02 & max: 1396-07-29</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker3" [min]="minDate" [max]="maxDate" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>Date validation - Datepicker Filter </mat-card-title>
+    <mat-card-subtitle>Prevent Thursday and Friday from being selected.</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker4" [matDatepickerFilter]="myFilter" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+        <mat-datepicker #picker4></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>dateInput and dateChange events</mat-card-title>
+    <mat-card-subtitle>See Browser Console</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker5" (dateInput)="onInput($event)" (dateChange)="onChange($event)"
+               placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+        <mat-datepicker #picker5></mat-datepicker>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>Weeks in Jalali Calendar</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+      <table border="1">
+        <thead>
+        <tr>
+          <th>English Name</th>
+          <th>Persian Name</th>
+          <th>Persian Abbr</th>
+          <th>Order</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of weeksInJalali">
+          <td>{{item.enName}}</td>
+          <td>{{item.faName}}</td>
+          <td>{{item.faAbbr}}</td>
+          <td>{{item.order}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+  <mat-card fxFlex="100">
+    <mat-card-title>Months in Jalali Calendar</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+    <mat-card-content>
+      <table dir="rtl">
+        <thead>
+        <tr>
+          <th>Persian Name</th>
+          <th>Order</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of monthsInJalali">
+          <td>{{item.faName}}</td>
+          <td>{{item.order}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+    <mat-card-footer></mat-card-footer>
+  </mat-card>
+
+</div>
+<br>
+<br>
+<br>
+<br>

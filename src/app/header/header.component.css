@@ -1,0 +1,17 @@
+.navbar{
+  background-color: #343434 !important;
+}
+.nav-link{
+  cursor: pointer !important;
+  color: white !important;
+}
+.header-login-mode{
+  float: left !important;
+}
+.logout{
+  float: left;
+  text-decoration: none;
+  color: white;
+  padding: 10px 5px;
+  cursor: pointer;
+}
