@@ -26,11 +26,9 @@ export class ScoresComponent implements OnInit {
     );
   }
   computingScore(score: any): any{
-    console.log(score);
   }
   goToScoreDetail(id: any): any{
     localStorage.setItem('scoreId', id);
-    console.log(id);
     this.router.navigateByUrl('/scores-detail').then()
   }
 }

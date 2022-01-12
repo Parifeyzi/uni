@@ -50,7 +50,6 @@ export class ExamPageComponent implements OnInit {
       (res) => {
         this.results = res.data;
         this.router.navigateByUrl('/scores').then();
-        console.log(this.results);
       }
     );
     // this.router.navigateByUrl('/scores').then();
@@ -58,9 +57,7 @@ export class ExamPageComponent implements OnInit {
   getExamInit(): any{
     this.examService.startExamExam().subscribe(
       (data) => {
-        console.log(data.data);
         this.examRepository.questions = data.data.questions;
-        console.log(this.examRepository.questions);
       }
     );
   }
@@ -68,14 +65,11 @@ export class ExamPageComponent implements OnInit {
   const answer = new Answer();
   answer.hash = hash;
   answer.questionId = id;
-  console.log(answer);
   this.ansTest.answers.push(answer);
-    console.log(this.ansTest);
   }
   check(): any{
     this.examService.finishExam(this.ansTest).subscribe(
       (res) => {
-        console.log(res);
         this.finishExam();
       }
     );

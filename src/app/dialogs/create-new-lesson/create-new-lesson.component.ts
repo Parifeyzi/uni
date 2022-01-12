@@ -29,7 +29,6 @@ export class CreateNewLessonComponent implements OnInit {
     this.close();
   }
   createNewLesson(): any{
-    console.log(this.lesson);
     this.lessonService.createLesson(this.lesson).subscribe(
       (data) => {
         this.lessonService.getLessons().subscribe(

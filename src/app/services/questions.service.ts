@@ -57,7 +57,6 @@ export class QuestionsService {
     };
     // @ts-ignore
     return this.http.put('http://localhost:8000/v1/lessons/' + localStorage.getItem('lesId') +'/questions/' + id + '/accept', localStorage.getItem('') ,options).pipe(map((response: Response) => {
-      console.log(response);
       return response;
     }));
   }

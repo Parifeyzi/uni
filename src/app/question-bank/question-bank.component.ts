@@ -33,7 +33,6 @@ export class QuestionBankComponent implements OnInit {
           this.questionAnswerService.getAnswersForQuestion(this.examRepository.questions[i].id).subscribe(
             (res) => {
               this.examRepository.questions[i].answers = res.data;
-              // console.log(this.examRepository.questions[i].answers);
             }
           );
         }
@@ -41,14 +40,10 @@ export class QuestionBankComponent implements OnInit {
     );
   }
   acceptQuestion(question: any): any{
-    // console.log(question);
     question.isAccepted = 1;
     // isAccepted = 1;
-    console.log(question);
-    console.log(question.id);
     this.questionService.accept(question.id).subscribe(
       (data) => {
-        console.log(data);
       }
     );
   }

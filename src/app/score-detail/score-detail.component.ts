@@ -17,7 +17,6 @@ export class ScoreDetailComponent implements OnInit {
   getResult(): any{
     this.examService.getResult().subscribe(
       (data) => {
-        console.log(data.data);
         this.results = data.data;
         const result = data.data.result;
         this.score = (result * 20) / data.data.questions.length;

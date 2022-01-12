@@ -19,7 +19,6 @@ export class TeacherExamListComponent implements OnInit {
     this.examService.getExams().subscribe(
       (data) => {
         this.exams = data.data.data;
-        console.log(this.exams);
       }
     );
   }

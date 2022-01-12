@@ -19,7 +19,6 @@ export class ResultComponent implements OnInit {
   getAllResult(): any{
     this.lessonsGetterService.getAllResult().subscribe(
       (data) => {
-        console.log(data);
         this.result = data.data;
       }
     );

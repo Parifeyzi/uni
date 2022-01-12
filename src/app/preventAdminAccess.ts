@@ -24,7 +24,6 @@ export class PreventAdminAccess implements CanActivate {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     if (token !== null && role === 'admin') {
-      console.log('HI Admin...');
       return true;
     } else {
       this.changeUrl();

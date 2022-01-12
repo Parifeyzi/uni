@@ -4,4 +4,5 @@ export class Exam {
   public startedAt?: any;
   public startedAtTime?: any;
   public description?: string;
+  public type?: any;
 }

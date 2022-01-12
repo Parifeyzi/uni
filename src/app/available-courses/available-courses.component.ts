@@ -26,7 +26,6 @@ export class AvailableCoursesComponent implements OnInit {
     this.getTeacherLessonById();
   }
   navigateToCreateQuestion(id: any): any{
-    console.log(id);
     localStorage.setItem('lesId', id);
     this.router.navigateByUrl('/lessons/create-question').then();
   }
@@ -34,7 +33,6 @@ export class AvailableCoursesComponent implements OnInit {
     this.lessonsService.getLessons().subscribe(
       (data) => {
         this.examRepository.lessons = data.data;
-        console.log(data.data);
       }
     );
   }
@@ -42,7 +40,6 @@ export class AvailableCoursesComponent implements OnInit {
   this.lessonsService.getTeacherLessonById().subscribe(
     (data) => {
       this.examRepository.teacherLessons = data.data;
-      console.log(data);
     }
   );
   }

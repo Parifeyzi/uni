@@ -29,14 +29,12 @@ export class AdminComponent implements OnInit {
     });
   }
   navigateToCreateExam(id: any): any{
-    console.log(id);
     this.router.navigateByUrl('/createExam').then();
   }
   getListOfLessons(): any{
     this.lessonsService.getLessons().subscribe(
       (data) => {
         this.examRepository.lessons = data.data;
-        console.log(data.data);
       }
     );
   }

@@ -14,7 +14,6 @@ export class PreventStudentAccess implements CanActivate {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
     if (token !== null && role === 'student') {
-      console.log('HI STUDENT...');
       return true;
     } else {
       this.changeUrl();

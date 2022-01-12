@@ -73,7 +73,6 @@ export class CreateQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkStudentMode = localStorage.getItem('role');
-    console.log(this.checkStudentMode);
   }
   createNewQuestionFunc(): any{
     this.createNewQuestion = true;
@@ -87,7 +86,6 @@ export class CreateQuestionComponent implements OnInit {
     }
     this.questionService.createQuestionsForLesson(createQuestionModel).subscribe(
       (data) => {
-        console.log(data);
       }
     );
     const answers = [
@@ -112,7 +110,6 @@ export class CreateQuestionComponent implements OnInit {
     ];
     this.questionService.postAnswers(answers).subscribe(
       (data) => {
-        console.log(data);
 
       }
     );
@@ -140,13 +137,6 @@ export class CreateQuestionComponent implements OnInit {
     this.preAnswers = this.productForm.value.quantities;
     this.preAnswers = this.preAnswers[0];
     this.answers = Object.entries(this.preAnswers).map(([type, value],) => ({type, value}));
-    // console.log(this.question);
-    // console.log(this.answers);
-    // let answersArr = [];
-    // for (let i = 0; i < this.answers.length; i++) {
-    // answersArr = this.answers[i].value;
-    // console.log(answersArr);
-    // }
     localStorage.setItem('q', this.question);
     localStorage.setItem('a1', this.answers[0].value);
     localStorage.setItem('a2', this.answers[1].value);
@@ -164,7 +154,6 @@ export class CreateQuestionComponent implements OnInit {
     question.answer3 = localStorage.getItem('a3');
     question.answer4 = localStorage.getItem('a4');
     this.questionModel.push(question);
-    console.log(this.questionModel);
     localStorage.setItem('questionModel', JSON.stringify(this.questionModel));
     alert('سوال ها و جواب ها با موفقیت ثبت شدند.');
   }
@@ -202,10 +191,8 @@ export class CreateQuestionComponent implements OnInit {
         },
       ]
     };
-    console.log(data);
     this.questionAnswerService.createAnswerForQuestion(Number(localStorage.getItem('questionId')), data).subscribe(
       (data) => {
-        console.log(data);
         this.nvFirstAnswer = false;
         this.nvSecondAnswer = false;
         this.nvThirdAnswer = false;
@@ -240,9 +227,7 @@ export class CreateQuestionComponent implements OnInit {
     };
     this.questionService.createQuestionsForLesson(questionModel).subscribe(
       (res) => {
-        console.log(res);
         localStorage.setItem('questionId', res.msg.questionId);
-        console.log(localStorage.getItem('questionId'));
       }
     )
   }
