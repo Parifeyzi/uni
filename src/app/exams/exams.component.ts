@@ -102,7 +102,8 @@ export class ExamsComponent implements OnInit, OnDestroy {
       ];
       const update = this.exams[i].updated_at;
       for (let p = 0; p < update.length; p++){
-        if (update[p].daysToDay < 0){
+        // console.log(update[p].daysToDay);
+        if (update[p].daysToDay < 0 && update[p].minutesToDay < -10){
           update[p].id = 'smaller';
         } else if (update[p].hoursToDay > -1 && update[p].minutesToDay > -1) {
           update[p].id = 'bigger';
