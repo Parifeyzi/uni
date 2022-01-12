@@ -37,9 +37,12 @@
                   از زمان آزمون گذشته است.
                 </div>
               </ng-container>
-            <button class="btn not_allow" *ngIf="exam.created_at" disabled>
+            <button class="btn not_allow" *ngIf="exam.created_at && exam.started_at !== null" disabled>
               شروع آزمون
             </button>
+              <button class="btn not_allow" *ngIf="exam.started_at === null">
+                شروع آزمون
+              </button>
             <button class="btn normal" *ngIf="!exam.created_at"
                     [disabled]="p.id == 'smaller'"
                     (click)="goToExam(exam.id)">
