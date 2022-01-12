@@ -169,6 +169,7 @@ export class CreateExamComponent implements OnInit {
     exam.duration = Number(this.examTime);
     exam.description = this.examDescription;
     exam.type = 2;
+    exam.startedAt = null;
     // this.initDate = localStorage.getItem('reminder-date');
     // const m = moment(this.initDate, 'jYYYY-jM-jD');
     // const a = m.format('jYYYY/jM/jD [is] YYYY/M/D');
@@ -196,6 +197,7 @@ export class CreateExamComponent implements OnInit {
     exam.duration = Number(this.examTime);
     exam.description = this.examDescription;
     exam.type = 2 ;
+    exam.startedAt = null;
     // this.initDate = localStorage.getItem('reminder-date');
     // this.saat = localStorage.getItem('reminder-time');
     // const m = moment(this.initDate, 'jYYYY-jM-jD');
