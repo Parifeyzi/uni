@@ -21,7 +21,8 @@
 <!--                    [ngClass]="{'not_allow': exam.created_at, 'normal' : !exam.created_at}"-->
 <!--                    (click)="checkIsFinished(exam)">شروع آزمون</button>-->
             <ng-container *ngFor="let p of exam.updated_at">
-            <div class="row mb-5 mb-md-0" *ngIf="p.id == 'bigger'">
+            <ng-container *ngIf="exam.started_at !== null">
+              <div class="row mb-5 mb-md-0" *ngIf="p.id == 'bigger'">
                 <div class="count_down" *ngIf="!exam.created_at">
                   {{p.secondsToDay}}:
                   {{p.minutesToDay}}:
@@ -29,10 +30,13 @@
                   |
                   {{p.daysToDay}} روز
                 </div>
-            </div>
-              <div class="row" *ngIf="p.id == 'smaller'">
-                از زمان آزمون گذشته است.
               </div>
+            </ng-container>
+              <ng-container *ngIf="exam.started_at !== null">
+                <div class="row" *ngIf="p.id == 'smaller'">
+                  از زمان آزمون گذشته است.
+                </div>
+              </ng-container>
             <button class="btn not_allow" *ngIf="exam.created_at" disabled>
               شروع آزمون
             </button>
