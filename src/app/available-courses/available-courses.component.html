@@ -6,7 +6,7 @@
     </div>
     <div class="row my-5">
       <div class="col-12 col-md-3" *ngFor="let lesson of examRepository.teacherLessons">
-        <div class="col-wrapper h-300" (click)="navigateToCreateQuestion(lesson.id)">
+        <div class="col-wrapper h-300" (click)="navigateToCreateQuestion(lesson)">
           <img class="les-cover" src="{{lesson.cover}}" alt="" width="300px" height="180px">
           <div class="row">
             <div class="course-name">

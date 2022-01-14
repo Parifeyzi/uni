@@ -9,12 +9,14 @@ import {ExamRepository} from "../models/ExamRepository";
 })
 export class SelectTypeOfExamComponent implements OnInit {
   public examRepository: ExamRepository;
+  public lessonTitle: any;
   constructor(private router: Router,
-    private injector: Injector,) { 
+    private injector: Injector,) {
       this.examRepository = ExamRepository.getInstance(injector);
     }
 
   ngOnInit(): void {
+    this.lessonTitle = localStorage.getItem('lessonTitle');
   }
   navigateToFormal(): any{
     this.router.navigateByUrl('/createExam').then();

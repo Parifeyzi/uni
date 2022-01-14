@@ -10,6 +10,7 @@ import {Answer} from "../models/answer.model";
   styleUrls: ['./exam-page.component.css']
 })
 export class ExamPageComponent implements OnInit {
+  public examName: any;
   public examRepository: ExamRepository;
   public results: any;
   public endExam: any = [];
@@ -41,6 +42,7 @@ export class ExamPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.examName = localStorage.getItem('exTitle');
     this.getExamInit();
   }
   finishExam(): any{

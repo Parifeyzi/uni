@@ -18,6 +18,7 @@ import {QuestionsService} from "../services/questions.service";
 })
 export class CreateExamComponent implements OnInit {
   public examRepository: ExamRepository;
+  public lessonTitle: any;
   public datePickerData: unknown;
   public showBank = false;
   public showRandomCount = false;
@@ -27,6 +28,8 @@ export class CreateExamComponent implements OnInit {
   public examTime = '';
   public examDescription = '';
   public answerList: any;
+  public disableButtonOne = false;
+  public disableButtonTwo = false;
   public exams = [
     {
       duration: '',
@@ -57,6 +60,7 @@ export class CreateExamComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.lessonTitle = localStorage.getItem('lessonTitle');
     this.examRepository.showTimerValue = '';
     this.exams = JSON.parse(<string>localStorage.getItem('exams')!== 'undefined' ? <string>localStorage.getItem('exams') : '[]');
     this.exams = this.exams ? this.exams : [];
@@ -109,6 +113,8 @@ export class CreateExamComponent implements OnInit {
     );
   }
   addFormalExam(): any{
+    this.disableButtonTwo = true;
+    this.showRandomCount = false;
     const exam = new Exam();
     exam.title = this.examName;
     exam.duration = Number(this.examTime);
@@ -164,22 +170,14 @@ export class CreateExamComponent implements OnInit {
     );
   }
   addInformalExam(): any{
+    this.disableButtonTwo = true;
+    this.showRandomCount = false;
     const exam = new Exam();
     exam.title = this.examName;
     exam.duration = Number(this.examTime);
     exam.description = this.examDescription;
     exam.type = 2;
     exam.startedAt = null;
-    // this.initDate = localStorage.getItem('reminder-date');
-    // const m = moment(this.initDate, 'jYYYY-jM-jD');
-    // const a = m.format('jYYYY/jM/jD [is] YYYY/M/D');
-    // const gregorian = m.format('YYYY-M-D');
-    // const current = new Date().getTime() / 1000;
-    // this.saat = localStorage.getItem('reminder-time');
-    // this.final = moment(gregorian + ' ' + this.saat);
-    // exam.startedAt = new Date(this.final._d).getTime() / 1000;
-    // const hourRemind = Math.floor((exam.startedAt - current) / 3600);
-    // console.log(hourRemind);
     this.examService.createExam(exam).subscribe(
       (data) => {
         this.examService.getExams().subscribe(
@@ -192,24 +190,14 @@ export class CreateExamComponent implements OnInit {
     );
   }
   addInformalExamWithRandomCount(): any{
+    this.disableButtonOne = true;
+    this.showBank = false;
     const exam = new Exam();
     exam.title = this.examName;
     exam.duration = Number(this.examTime);
     exam.description = this.examDescription;
     exam.type = 2 ;
     exam.startedAt = null;
-    // this.initDate = localStorage.getItem('reminder-date');
-    // this.saat = localStorage.getItem('reminder-time');
-    // const m = moment(this.initDate, 'jYYYY-jM-jD');
-    // const t = moment(this.saat, 'jHH:jMM:jSS');
-    // const a = m.format('jYYYY/jM/jD [is] YYYY/M/D');
-    // const s = t.format('jHH:jMM:jSS [is] HH/MM/SS')
-    // const gregorian = m.format('YYYY-M-D');
-    // const gregorianTime = t.format('HH/MM/SS');
-    // const current = new Date().getTime() / 1000;
-    // this.final = moment(gregorian + ' ' + this.saat);
-    // exam.startedAt = new Date(this.final._d).getTime() / 1000;
-    // const hourRemind = Math.floor((exam.startedAt - current) / 3600);
     this.examService.createExam(exam).subscribe(
       (data) => {
         this.examService.getExams().subscribe(

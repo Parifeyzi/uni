@@ -25,8 +25,9 @@ export class AvailableCoursesComponent implements OnInit {
     this.getAllAvailableLessons();
     this.getTeacherLessonById();
   }
-  navigateToCreateQuestion(id: any): any{
-    localStorage.setItem('lesId', id);
+  navigateToCreateQuestion(lesson: any): any{
+    localStorage.setItem('lesId', lesson.id);
+    localStorage.setItem('lessonTitle', lesson.title);
     this.router.navigateByUrl('/lessons/create-question').then();
   }
   getAllAvailableLessons(): any{

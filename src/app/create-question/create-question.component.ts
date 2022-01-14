@@ -5,6 +5,7 @@ import {ExamRepository} from "../models/ExamRepository";
 import {Router} from "@angular/router";
 import {Question} from "../models/question.model";
 import {QuestionsAnswersService} from "../services/questions-answers.service";
+import {SnackBarService} from "../services/snack-bar.service";
 interface Food {
   value: string;
   viewValue: string;
@@ -19,6 +20,12 @@ interface Correction {
   styleUrls: ['./create-question.component.css']
 })
 export class CreateQuestionComponent implements OnInit {
+  public lessonTitle: any;
+  public disableFirstRadio = false;
+  public disableSecondRadio = false;
+  public disableThirdRadio = false;
+  public disableFourthRadio = false;
+  public disableButton = false;
   public selectedValue: any;
   public test = false;
   public createNewQuestion = true;
@@ -63,7 +70,8 @@ export class CreateQuestionComponent implements OnInit {
               public questionService: QuestionsService,
               public questionAnswerService: QuestionsAnswersService,
               public injector: Injector,
-              private router: Router) {
+              private router: Router,
+              private snackbarService: SnackBarService) {
     this.productForm = this.fb.group({
       name: '',
       quantities: this.fb.array([]) ,
@@ -73,6 +81,7 @@ export class CreateQuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkStudentMode = localStorage.getItem('role');
+    this.lessonTitle = localStorage.getItem('lessonTitle');
   }
   createNewQuestionFunc(): any{
     this.createNewQuestion = true;
@@ -206,6 +215,8 @@ export class CreateQuestionComponent implements OnInit {
         this.nvSecondCorrection = 0;
         this.nvThirdCorrection = 0;
         this.nvFourthCorrection = 0;
+        this.disableButton = true;
+        this.snackbarService.showSnackBar('سوال شما با موفقیت ثبت شد', 'green-snackbar');
       }
     )
   }
@@ -236,14 +247,30 @@ export class CreateQuestionComponent implements OnInit {
  }
  checkFirst(value: any): any{
   this.nvFirstCorrection === 1;
+  this.disableFirstRadio = true;
+  this.disableSecondRadio = true;
+  this.disableThirdRadio = true;
+  this.disableFourthRadio = true;
  }
  checkSecond(value: any): any{
   this.nvSecondCorrection === 1;
+   this.disableFirstRadio = true;
+   this.disableSecondRadio = true;
+   this.disableThirdRadio = true;
+   this.disableFourthRadio = true;
  }
  checkThird(value: any): any{
   this.nvThirdCorrection === 1;
+   this.disableFirstRadio = true;
+   this.disableSecondRadio = true;
+   this.disableThirdRadio = true;
+   this.disableFourthRadio = true;
  }
  checkFourth(value: any): any{
   this.nvFourthCorrection === 1;
+   this.disableFirstRadio = true;
+   this.disableSecondRadio = true;
+   this.disableThirdRadio = true;
+   this.disableFourthRadio = true;
  }
 }

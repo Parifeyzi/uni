@@ -55,6 +55,8 @@ export class ExamRepository {
   public backToExamsMode = 'no';
   public informalMode: any;
   public formalMode: any;
+  public username: any;
+  public examType: any;
   protected router: Router;
 
   public static getInstance(injector: Injector): ExamRepository {
@@ -74,11 +76,13 @@ export class ExamRepository {
     // localStorage.setItem('pomodoroSound', JSON.stringify(this.pomodoroSound));
   }
   navigateToFormal(): any{
+    this.examType = 'رسمی';
     this.formalMode = true;
     this.informalMode = false;
     this.router.navigateByUrl('/createExam').then();
   }
   navigateToinFormal(): any{
+    this.examType = 'آزمایشی';
     this.formalMode = false;
     this.informalMode = true;
     this.router.navigateByUrl('/createExam').then();

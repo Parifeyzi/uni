@@ -83,8 +83,9 @@ export class ExamsComponent implements OnInit, OnDestroy {
       }
     );
   }
-  goToExam(id: any): any {
-    localStorage.setItem('exId', id);
+  goToExam(exam: any): any {
+    localStorage.setItem('exId', exam.id);
+    localStorage.setItem('exTitle', exam.title);
     this.router.navigateByUrl('/exam_page').then();
   }
   private getTimeDifference () {

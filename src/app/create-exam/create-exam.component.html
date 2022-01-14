@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-12 px-5">
         <div class="form-wrapper">
-          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">ایجاد آزمون
-            جدید
+          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">
+            ایجاد آزمون  {{examRepository.examType}} برای درس {{lessonTitle}}
           </div>
           <div class="form row">
             <div class="col-12 col-md-6 mb-3">
@@ -45,7 +45,7 @@
               <div class="col-6 bg2">
                 <div class="row">
                   <div class="col-1">
-                    <input type="radio" (click)="addFormalExam()">
+                    <input type="radio" [disabled]="disableButtonOne" (click)="addFormalExam()">
                   </div>
                   <div class="col-11">
                     انتخاب دستی سوالات
@@ -55,7 +55,7 @@
               <div class="col-6 bg1">
                 <div class="row">
                   <div class="col-1">
-                    <input type="radio" (click)="addFormalExamWithRandomCount()">
+                    <input type="radio" [disabled]="disableButtonTwo" (click)="addFormalExamWithRandomCount()">
                   </div>
                   <div class="col-11">
                     انتخاب تصادفی سوالات
@@ -126,8 +126,8 @@
     <div class="row">
       <div class="col-12 px-5">
         <div class="form-wrapper">
-          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">ایجاد آزمون
-            جدید
+          <div class="wrapper-title my-3" style="font-weight: 700; font-size: 20px; margin: 40px 0">
+            ایجاد آزمون  {{examRepository.examType}} برای درس {{lessonTitle}}
           </div>
           <div class="form row">
             <div class="col-6 mb-3">
@@ -167,7 +167,7 @@
               <div class="col-6 bg2">
                 <div class="row">
                   <div class="col-1">
-                    <input type="radio" (click)="addInformalExam()">
+                    <input type="radio" [disabled]="disableButtonOne" (click)="addInformalExam()">
                   </div>
                   <div class="col-11">
                     انتخاب دستی سوالات
@@ -177,7 +177,7 @@
               <div class="col-6 bg1">
                 <div class="row">
                   <div class="col-1">
-                    <input type="radio" (click)="addInformalExamWithRandomCount()">
+                    <input type="radio" [disabled]="disableButtonTwo" (click)="addInformalExamWithRandomCount()">
                   </div>
                   <div class="col-11">
                     انتخاب تصادفی سوالات
@@ -190,15 +190,27 @@
       </div>
     </div>
     <div class="row mt-3" *ngIf="showBank">
-      <!--        <div class="row mt-3">-->
+<!--              <div class="row mt-3">-->
       <div class="card border-success col-12 mb-3">
         <div class="card-header bg-transparent border-success">لیست سوال ها</div>
-        <div class="card-body text-success my_q" *ngFor="let question of questionList; let i = index">
+<!--        <div class="card-body text-success my_q" *ngFor="let question of questionList; let i = index">-->
+<!--          <h5 class="card-title"-->
+<!--              style="font-family: iranyekan !important;"-->
+<!--              [ngClass]="{'selected': question.attachment != null, 'n_selected' : question.attachment === null }"-->
+<!--              (click)="selectQuestion(question)"-->
+<!--          >{{i + 1}}) {{question.question}}</h5>-->
+<!--        </div>-->
+        <div class="card-body text-success my_q" *ngFor="let question of examRepository.questions; let i = index">
           <h5 class="card-title"
               style="font-family: iranyekan !important;"
               [ngClass]="{'selected': question.attachment != null, 'n_selected' : question.attachment === null }"
               (click)="selectQuestion(question)"
           >{{i + 1}}) {{question.question}}</h5>
+          <div style="font-size: 10px" *ngFor="let a of question.answers; let i = index">
+            <p class="card-text answers" style="color: black;">
+              {{i + 1}}) {{a.answer}}
+            </p>
+          </div>
         </div>
         <div class="card-footer bg-transparent border-success">
           <button class="btn btn-success" (click)="finalSelect()">تایید</button>

@@ -13,6 +13,7 @@ import {map} from "rxjs/operators";
 })
 export class QuestionBankComponent implements OnInit {
   public examRepository: ExamRepository;
+  public lessonTitle: any;
   public acceptIt = false;
   constructor(
               private questionService: QuestionsService,
@@ -24,6 +25,8 @@ export class QuestionBankComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQuestions();
+    this.lessonTitle = localStorage.getItem('lessonTitle');
+    this.examRepository.username = localStorage.getItem('yourName');
   }
   getQuestions(): any{
     this.questionService.getQuestionByLessonId().subscribe(

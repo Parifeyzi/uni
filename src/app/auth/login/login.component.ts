@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
   login(): any{
     this.userService.login(this.user).subscribe((data) => {
       localStorage.setItem('token', data.access_token);
-      // localStorage.setItem('', this.user.)
       this.examRepository.headerLoginMode = true;
       this.userService.getMe().subscribe(
         (data) => {
           localStorage.setItem('role', data.data.role);
+          localStorage.setItem('yourName', data.data.name);
+          this.examRepository.username = data.data.name;
           if (!localStorage.getItem('role')) {
             this.examRepository.adminMode = false;
             this.examRepository.studentMode = false;
